@@ -1,0 +1,61 @@
+main
+  min-height: calc(100vh - (80px + 278px + 73.41px))
+  
+  .comic-container
+    position: relative
+    background-color: $light-dark
+    padding: 3rem 0 1.5rem
+    .label
+      position: absolute
+      background-color: $primary
+      top: -20px
+      left: 150px
+      padding: .5rem
+      font-size: 22px
+      font-weight: 800
+
+    .card
+      width: calc(100% / 6 - 25px)
+      word-break: break-word
+    
+      img
+        width: 100%
+        object-fit: cover
+
+      .title
+        text-transform: uppercase
+
+    .grid-card
+        display: flex
+        flex-wrap: wrap
+        gap: 30px
+        margin-bottom: 2rem
+
+  button
+    padding: .5rem 3rem
+    color: white
+    background-color: $primary
+    border: none
+    cursor: pointer
+    font-size: 16px
+    transition: all .5s
+    &:hover
+      background-color: #2395ff
+
+  .jumbotron
+    height: 250px
+    background-image: url(../images/jumbotron.jpg)
+    background-size: cover
+    background-repeat: no-repeat
+
+  .shop-container
+      padding: 2rem 0 
+      background-color: $primary
+      .container
+        font-size: 16px
+        justify-content: space-evenly
+        .shop-item
+          text-transform: uppercase
+      img
+        width: 30px
+        margin-right: 10px
