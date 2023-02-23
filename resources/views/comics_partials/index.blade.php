@@ -7,6 +7,11 @@
             <div class="label">
                 CURRENT SERIES
             </div>
+            <div class="add-comic">
+                <a href="{{route('comics.create')}}">
+                    <button>Aggiungi</button>
+                </a>
+            </div>
             <div class="grid-card">
                 @foreach($data as $comic)
                 <div class="card">

@@ -8,9 +8,17 @@
     <div class="menu flex h-100 w-100">
       <ul class="h-100 mr-2">
         @foreach($menu as $menuItem)
-          <li class="h-100 flex flex-center cursor-pointer {{($menuItem == 'comics') ? 'active' : ''}}">
+          @if($menuItem == 'comics')
+            <a href="{{route('comics.index')}}">
+              <li class="h-100 flex flex-center cursor-pointer active">
+                {{ $menuItem }}
+              </li>
+            </a>
+          @else
+          <li class="h-100 flex flex-center cursor-pointer">
               {{ $menuItem }}
           </li>
+          @endif
         @endforeach
       </ul>
       <div class="h-100 flex flex-center">

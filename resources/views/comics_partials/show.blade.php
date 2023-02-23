@@ -24,7 +24,7 @@
               {{$comic['writers']}} 
             </p>
           </div>
-          <span class="price">{{$comic['price']}}</span>
+          <span class="price">{{$comic['price']}}€</span>
           <div>
             <button>Purchase</button>
           </div>

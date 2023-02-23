@@ -112,7 +112,6 @@ return [
       ],  
     ],
     'menu' => [
-        'characters',
         'comics',
         'characters',
         'movies',

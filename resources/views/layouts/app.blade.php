@@ -26,6 +26,7 @@
     @include('partials.header')
     @yield('home')
     @yield('product')
+    @yield('add_comic')
     @include('partials.footer')
 </body>
 
