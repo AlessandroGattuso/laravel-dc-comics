@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ComicController as ComicController;
+use App\Http\Controllers\PagesController as PagesController;
+use App\Http\Controllers\ComicsController as ComicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use App\Http\Controllers\ComicController as ComicController;
 |
 */
 
-Route::get('', [ComicController::class, 'index'])->name('home');
-
-Route::get('comics/{comicSlug}', [ComicController::class, 'getComic'])->name('comic');
+Route::get('', [PagesController::class, 'index'])->name('home');
+Route::resource('comics',ComicsController::class);
+//Route::get('comics/{comicSlug}', [ComicController::class, 'getComic'])->name('comic');
