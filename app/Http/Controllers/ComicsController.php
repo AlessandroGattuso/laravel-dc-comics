@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
 
 class ComicsController extends Controller
 {
@@ -32,7 +33,7 @@ class ComicsController extends Controller
         $images = config('comics.images');
         $menu = config('comics.menu');
         $socials = config('comics.socials');
-        return view('comics_partials.add_comic', compact('images','menu','socials'));
+        return view('comics_partials.add', compact('images','menu','socials'));
     }
 
     /**
@@ -43,16 +44,18 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
+        $input =$this->validation($request->all());
         $newComic = new Comic();
-        
-        $newComic->title = $inputs['title'];
-        $newComic->description = $inputs['description'];
-        $newComic->thumb = $inputs['thumb'];
-        $newComic->series = $inputs['series'];
-        $newComic->type = $inputs['type'];
-        $newComic->price = $inputs['price'];
-        $newComic->sale_date = $inputs['sale_date'];
+
+        // $newComic->title = $input['title'];
+        // $newComic->description = $input['description'];
+        // $newComic->thumb = $input['thumb'];
+        // $newComic->series = $input['series'];
+        // $newComic->type = $input['type'];
+        // $newComic->price = $input['price'];
+        // $newComic->sale_date = $input['sale_date'];
+
+        $newComic->fill($input);
 
         $newComic->save();
         return redirect()->route('comics.show',['comic' => $newComic-> id]);
@@ -83,7 +86,13 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+
+        $images = config('comics.images');
+        $menu = config('comics.menu');
+        $socials = config('comics.socials');
+        
+        return view('comics_partials.edit', compact('comic','menu','images','socials'));
     }
 
     /**
@@ -95,7 +104,11 @@ class ComicsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateForm = $this->validation($request->all());
+        $updateComic = Comic::findOrFail($id);
+
+        $updateComic->update($updateForm);
+        return redirect()->route('comics.show',['comic' => $updateComic->id]);
     }
 
     /**
@@ -107,5 +120,30 @@ class ComicsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Validate inputs data
+     *
+     * @param strings array $input
+     * @return validator
+     */
+    private function validation($input){
+        $validator = Validator::make($input,[
+            'title' => 'required|max:50',
+            'price' => 'required',
+            'thumb' => 'required || max:300',
+            'description' => 'required',
+        ],
+        [
+            'title.required' => "Devi inserire il titolo",
+            'title.max' => "Il titolo non deve superare :max caratteri",
+            'price.required' => "Devi inserire il prezzo",
+            'thumb.required' => "Devi inserire il path dell'immagine",
+            'thumb.max' => "Il path dell'immagine non deve surperare :max caratteri",
+            'description.required' => 'Devi inserire la descrizione',
+
+        ])->validate();
+        return $validator;
     }
 }

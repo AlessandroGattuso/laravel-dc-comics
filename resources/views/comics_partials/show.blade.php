@@ -1,32 +1,23 @@
 @extends('layouts.app')
-@section('product')
+@section('show_comic')
 <main>
   <div class="comic-card-container">
-    <div class="flex row">
-        <div class="col thumb">
+    <div class="row gap-1 d-flex">
+        <div class="col-4">
           <img src="{{$comic['thumb']}}" alt="Image not found">
         </div>
-        <div class="col description">
+        <div class="col-7 d-flex flex-column gap-2">
           <h2>{{$comic['title']}}</h2>
           <p>{{$comic['description']}}</p>
           <div>
             <span>Series: </span><span class="series">{{$comic['series']}}</span>
           </div>
-          <div class="flex flex-center">
-            <span>Artists: </span>
-            <p class="artists">
-                {{$comic['artists']}} 
-            </p>
-          </div>
-          <div class="flex flex-center">
-            <span>Writers: </span>
-            <p class="writers">
-              {{$comic['writers']}} 
-            </p>
-          </div>
           <span class="price">{{$comic['price']}}€</span>
-          <div>
-            <button>Purchase</button>
+          <div class="d-flex gap-4">
+            <a href="{{route('comics.edit', ['comic' => $comic->id])}}">
+              <button class="btn btn-warning">Edit</button>
+            </a>
+            <button class="btn btn-danger">Delete</button>
           </div>
         </div>
     </div>

@@ -7,6 +7,9 @@
                 <div class="mb-3">
                     <label class="form-label">Nome Fumetto</label>
                     <input type="text" name="title" class="form-control">
+                    @error('title')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="flex gap-1">
                     <div class="mb-3">
@@ -22,6 +25,9 @@
                     <div class="mb-3">
                         <label class="form-label">Prezzo</label>
                         <input type="text" name="price" class="form-control">
+                        @error('price')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Data di rilascio</label>
@@ -31,10 +37,16 @@
                 <div class="mb-3">
                     <label class="form-label">Immagine</label>
                     <input type="text" name="thumb" class="form-control">
+                    @error('thumb')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Descrizione</label>
-                    <input type="textarea" name="description" class="form-control">
+                    <textarea type="textarea" name="description" class="form-control"></textarea>
+                    @error('title')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-jc-center">
                     <button type="submit" class="btn btn-primary">Submit</button>

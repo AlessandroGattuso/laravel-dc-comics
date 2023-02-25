@@ -7,18 +7,21 @@
     </div>
     <div class="menu flex h-100 w-100">
       <ul class="h-100 mr-2">
-        @foreach($menu as $menuItem)
-          @if($menuItem == 'comics')
-            <a href="{{route('comics.index')}}">
-              <li class="h-100 flex flex-center cursor-pointer active">
-                {{ $menuItem }}
-              </li>
-            </a>
-          @else
-          <li class="h-100 flex flex-center cursor-pointer">
-              {{ $menuItem }}
+        <a href="{{route('home')}}">
+          <li class="h-100 flex flex-center cursor-pointer {{Route::currentRouteName() == 'home' ? 'active' : ''}}">
+            Home
           </li>
-          @endif
+        </a>
+    
+        <a href="{{route('comics.index')}}">
+          <li class="h-100 flex flex-center cursor-pointer {{(Route::currentRouteName() == 'comics.index') ? 'active' : ''}}">
+            Comics
+          </li>
+        </a>
+        @foreach($menu as $menuItem)   
+            <li class="h-100 flex flex-center cursor-pointer">
+              {{$menuItem}}
+            </li>
         @endforeach
       </ul>
       <div class="h-100 flex flex-center">

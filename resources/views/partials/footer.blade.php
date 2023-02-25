@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid dc-background">
+    <div class="container-fluid dc-background p-0">
       <div class="container flex flex-between text-white">
         <div class="flex lists-container">
           <div>

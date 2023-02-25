@@ -14,7 +14,7 @@
             </div>
             <div class="grid-card">
                 @foreach($data as $comic)
-                <div class="card">
+                <div class="myCard">
                     <a href="{{route('comics.show', ['comic' => $comic->id])}}">
                         <img src="{{$comic['thumb']}}" alt="Image not found">
                         <p class="title">{{ $comic['series'] }}</p>
