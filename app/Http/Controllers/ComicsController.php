@@ -139,7 +139,10 @@ class ComicsController extends Controller
     private function validation($input){
         $validator = Validator::make($input,[
             'title' => 'required|max:50',
+            'series' => 'nullable',
+            'type' => 'nullable',
             'price' => 'required',
+            'sale_date' => 'nullable',
             'thumb' => 'required || max:300',
             'description' => 'required',
         ],
