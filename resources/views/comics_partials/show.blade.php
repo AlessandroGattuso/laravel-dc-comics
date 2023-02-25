@@ -6,12 +6,13 @@
         <div class="col-4">
           <img src="{{$comic['thumb']}}" alt="Image not found">
         </div>
-        <div class="col-7 d-flex flex-column gap-2">
+        <div class="col-7 d-flex flex-column gap-4">
           <h2>{{$comic['title']}}</h2>
           <p>{{$comic['description']}}</p>
           <div>
             <span>Series: </span><span class="series">{{$comic['series']}}</span>
           </div>
+          <p>{{\Carbon\Carbon::createFromFormat('Y-m-d', $comic->sale_date)->format('d/m/Y');}}</p>
           <span class="price">{{$comic['price']}}€</span>
           <div class="d-flex gap-4">
             <a href="{{route('comics.edit', ['comic' => $comic->id])}}">
