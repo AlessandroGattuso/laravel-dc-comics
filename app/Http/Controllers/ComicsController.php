@@ -119,7 +119,15 @@ class ComicsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+
+        $comic->delete();
+
+        $images = config('comics.images');
+        $menu = config('comics.menu');
+        $socials = config('comics.socials');
+        
+        return redirect()->route('comics.index', compact('menu','images','socials'));
     }
 
     /**

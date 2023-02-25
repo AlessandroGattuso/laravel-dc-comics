@@ -17,10 +17,11 @@
             <a href="{{route('comics.edit', ['comic' => $comic->id])}}">
               <button class="btn btn-warning">Edit</button>
             </a>
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
           </div>
         </div>
     </div>
   </div>
+  @include('comics_partials.delete_modal')
 </main>
 @endsection
