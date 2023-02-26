@@ -52,7 +52,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-jc-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Aggiungi</button>
                 </div>
             </form>
         </div>
