@@ -137,12 +137,16 @@ class ComicsController extends Controller
      * @return validator
      */
     private function validation($input){
+        
+        if($input['price'])
+            $input['price'] = str_replace(',', '.', $input['price']);
+
         $validator = Validator::make($input,[
             'title' => 'required|max:50',
             'series' => 'nullable',
             'type' => 'nullable',
-            'price' => 'required',
-            'sale_date' => 'nullable',
+            'price' => 'required|numeric',
+            'sale_date' => 'nullable|date_format:Y-m-d',
             'thumb' => 'required || max:300',
             'description' => 'required',
         ],
@@ -150,6 +154,8 @@ class ComicsController extends Controller
             'title.required' => "Devi inserire il titolo",
             'title.max' => "Il titolo non deve superare :max caratteri",
             'price.required' => "Devi inserire il prezzo",
+            'price.numeric' => "Il prezzo deve essere un numero",
+            'date_format' => "Devi inserire una data valida",
             'thumb.required' => "Devi inserire il path dell'immagine",
             'thumb.max' => "Il path dell'immagine non deve surperare :max caratteri",
             'description.required' => 'Devi inserire la descrizione',

@@ -32,6 +32,9 @@
                     <div class="mb-3">
                         <label class="form-label">Data di rilascio</label>
                         <input type="text" name="sale_date" class="form-control">
+                        @error('sale_date')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
